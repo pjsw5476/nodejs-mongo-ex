@@ -5,6 +5,7 @@ const express = require("express");
 const session = require('express-session');
 const bodyParser = require("body-parser");
 
+
 //FIXME SWAGGER
 const swaggerJSDoc = require('swagger-jsdoc');  
 const swaggerUI = require('swagger-ui-express')
@@ -13,6 +14,8 @@ const swaggerUI = require('swagger-ui-express')
 
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+// const passport = require('passport');
+// const configJWTStratey = require('./utils/passport-jwt');
 
 
 const app = express();
@@ -22,6 +25,10 @@ app.use(express.json({ limit: '10MB' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended:true }))
+
+//FIXME TEST_PASSPORT
+// app.use(passport.initialize());
+// configJWTStratey();
 
 //FIXME 세션
 app.use(session({
@@ -37,6 +44,7 @@ app.use(session({
 
 app.use('/', userRoutes)
 app.use('/', productRoutes)
+
 //FIXME SWAGGER START
 const swaggerOptions = {
     swaggerDefinition: {
