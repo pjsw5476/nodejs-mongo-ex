@@ -1,3 +1,7 @@
+## jwt 
+## https://github.com/jmchaves/node-passport-jwt-example-app
+
+
 # https://www.bacancytechnology.com/blog/joi-validation-in-nodejs-and-express
 
 
