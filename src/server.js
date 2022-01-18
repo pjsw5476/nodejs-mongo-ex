@@ -9,13 +9,14 @@ const bodyParser = require("body-parser");
 //FIXME SWAGGER
 const swaggerJSDoc = require('swagger-jsdoc');  
 const swaggerUI = require('swagger-ui-express')
-// const YAML = require('yamljs');
-// const swaggerDocument = YAML.load('./swagger.yaml');
 
+// ROUTER
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
-// const passport = require('passport');
-// const configJWTStratey = require('./utils/passport-jwt');
+
+//FIXME TEST_PASSPORT
+const passport = require('passport');
+const configJWTStratey = require('./utils/passport-jwt');
 
 
 const app = express();
@@ -27,8 +28,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended:true }))
 
 //FIXME TEST_PASSPORT
-// app.use(passport.initialize());
-// configJWTStratey();
+app.use(passport.initialize());
+configJWTStratey();
 
 //FIXME 세션
 app.use(session({
@@ -37,10 +38,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: true }
 }));
-
-// PASSPORT Middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 app.use('/', userRoutes)
 app.use('/', productRoutes)
